@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Nav from '../components/Nav/index';
 
 const Home = () => {
   return (
     <div>
+      <Nav />
       <Hero>
         <section>
           <h1>Organize your task for the week right here</h1>
