@@ -23,8 +23,10 @@ const GlobablStyle = createGlobalStyle`
     --primary-color: #206da0;
     --accent-color: #cac333;
     --secondary-dark: #03131e;
-    --gray-color-1: #eceaea;
+    --gray-color-1: #eff4f5;
+    --gray-color-2: #DDE3E2; 
     --light-color: #eafbff;
+    --red-color: #be2b1e;
     --off-white: #f8fafb;
   }
 
