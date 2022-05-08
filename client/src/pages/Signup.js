@@ -20,6 +20,7 @@ const Signup = () => {
                 placeholder="Enter company name e.g Facebook"
                 label="Company name"
                 value=""
+                name="name"
                 hasError={error}
                 onChange={() => {}}
                 required 
@@ -29,6 +30,7 @@ const Signup = () => {
                 placeholder="Enter email address"
                 label="Email address"
                 value=""
+                name="email"
                 hasError={error}
                 onChange={() => {}}
                 required 
@@ -38,6 +40,7 @@ const Signup = () => {
                 placeholder="Enter password"
                 label="Password"
                 value=""
+                name="password"
                 hasError={error}
                 onChange={() => {}}
                 required 
@@ -47,6 +50,7 @@ const Signup = () => {
                 placeholder="Re-enter your password"
                 label="Confirm password"
                 value=""
+                name="confirmPassword"
                 hasError={error}
                 onChange={() => {}}
                 required 
@@ -77,6 +81,7 @@ const Signup = () => {
                 placeholder="Enter username"
                 label="Username"
                 value=""
+                name="name"
                 hasError={error}
                 onChange={() => {}}
                 required 
@@ -86,6 +91,7 @@ const Signup = () => {
                 placeholder="Enter email address"
                 label="Email address"
                 value=""
+                name="email"
                 hasError={error}
                 onChange={() => {}}
                 required 
@@ -95,6 +101,7 @@ const Signup = () => {
                 placeholder="Enter password"
                 label="Password"
                 value=""
+                name="password"
                 hasError={error}
                 onChange={() => {}}
                 required 
@@ -104,6 +111,7 @@ const Signup = () => {
                 placeholder="Re-enter your password"
                 label="Confirm password"
                 value=""
+                name="confirmPassword"
                 hasError={error}
                 onChange={() => {}}
                 required 
