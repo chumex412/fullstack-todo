@@ -1,17 +1,27 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
+import useGlobalContext from '../../custom/Context'
 import styled from 'styled-components'
 
 import { getUser } from '../../_selectors/userSelector'
+import { loginAction } from '../../_actions/creator'
 
-const Sidebar = ({user}) => {
+const Sidebar = ({user, signout}) => {
+  const { showSidebar } = useGlobalContext()
+
+  const handleSignOut = () => {
+    sessionStorage.clear();
+    signout()
+  }
+
   return (
-    <Aside>
+    <Aside className={`${showSidebar ? "show-sidebar" : ""}`}>
       <div>
         <ProfileContainer>
           <div className="img-container"></div>
-          <p>Hello {user.name}</p>
+          <p>Hello, {user.name}</p>
         </ProfileContainer>
         <SidebarLinksContainer>
           <ul className="nav_side-list">
@@ -33,7 +43,7 @@ const Sidebar = ({user}) => {
             </li>
           </ul>
           <div className="btn-container">
-            <button className="signout-btn">
+            <button className="signout-btn" onClick={handleSignOut}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M15.3 16.3q-.3-.4-.3-.8t.3-.7l1.9-1.8H10q-.4 0-.7-.3-.3-.3-.3-.7 0-.4.3-.7.3-.3.7-.3h7.2l-1.9-1.8q-.3-.3-.3-.8 0-.4.3-.7.3-.3.7-.3.4 0 .7.3l3.6 3.6.2.3v.8q0 .2-.2.3l-3.6 3.6q-.3.3-.7.3-.4 0-.7-.3ZM5 21q-.8 0-1.4-.6Q3 19.8 3 19V5q0-.8.6-1.4Q4.2 3 5 3h6q.4 0 .7.3.3.3.3.7 0 .4-.3.7-.3.3-.7.3H5v14h6q.4 0 .7.3.3.3.3.7 0 .4-.3.7-.3.3-.7.3Z"/>
               </svg>
@@ -47,6 +57,8 @@ const Sidebar = ({user}) => {
 }
 
 const Aside = styled.aside`
+  overflow-x: hidden;
+
   & > div {
     background-color: var(--secondary-dark);
     position: fixed;
@@ -57,6 +69,32 @@ const Aside = styled.aside`
     padding: 5rem 2rem;
     display: grid;
     grid-template-rows: auto 1fr;
+  }
+
+  @media only screen and (max-width: 899px) {
+    background-color: var(--secondary-dark);
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-width: 400px;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-150%);
+    -moz-transform: translateX(-150%);
+    -webkit-transform: translateX(-150%);
+    transition: transform 0.4s ease-out;
+    -moz-transition: transform 0.4s ease-out;
+    -webkit-transition: transform 0.4s ease-out;
+    z-index: 5;
+
+    &.show-sidebar {
+      transform: translateX(0);
+      -moz-transform: translateX(0);
+      -webkit-transform: translateX(0);
+    }
+    & > div {
+      position: static;
+    }
   }
 `;
 
@@ -128,4 +166,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Sidebar);
+const mapDispatchToProps = dispatch => {
+  return {
+    signout: () => dispatch(loginAction().logout())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
