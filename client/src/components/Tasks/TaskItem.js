@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import { utils } from '../../_utils';
 
 const TaskItem = ({ 
   id, 
-  name, 
+  name,
+  time, 
   completed, 
   completeTask, 
   remove,
@@ -17,7 +19,10 @@ const TaskItem = ({
           backgroundColor: completed ? "#2062a0" : "#ca9033",
         }}>{completed ? "Done" : "Pending"}</p>
         <div>
-          <label>{name}</label>
+          <p className="task-info">
+            <label>{name}</label>
+            <span>{new Date(time).toLocaleDateString('en-Ng', utils.dateFormatOptions())}</span>
+          </p>
           <div className="task-action">
             <button onClick={() => showModal(id)}>Edit</button>
             <button onClick={() => remove(id)}>Delete</button>
@@ -47,21 +52,33 @@ const ItemContainer = styled.article`
     align-items: center;
     grid-template-columns: auto 1fr auto;
     gap: 3.5rem;
+
+    & > p {
+      color: #ffffff;
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+      font-size: calc(1.6rem * var(--base-size));
+      line-height: 150%;
+      font-weight: 600;
+    }
   }
 
-  p {
-    color: #ffffff;
-    padding: 0.5rem 1.5rem;
-    border-radius: 20px;
-    font-size: calc(1.6rem * var(--base-size));
-    line-height: 150%;
-    font-weight: 600;
-  }
+  .task-info {
+    display: flex;
+    flex-direction: column;
 
-  label {
-    font-size: calc(1.8rem * var(--base-size));
-    line-height: 150%;
-    color: var(--secondary-color); 
+    label {
+      font-size: calc(1.8rem * var(--base-size));
+      line-height: 150%;
+      color: var(--secondary-color);
+      margin-bottom : 1rem;
+    }
+
+    span {
+      font-size: calc(1.4rem * var(--base-size));
+      line-height: 150%;
+      color: var(--primary-color); 
+    }
   }
 
   .task-action {
