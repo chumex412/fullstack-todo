@@ -10,7 +10,7 @@ import { AppProvider } from "./custom/Context";
 const root = createRoot(document.getElementById("root"))
 root.render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/'>
       <Provider store={store}>
         <AppProvider>
           <App />
