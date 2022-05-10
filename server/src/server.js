@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require('path');
 const bodyParser = require("body-parser");
 const cookieSession = require("cookie-session");
 const connection = require("./db");
@@ -9,6 +10,8 @@ const app = express();
 
 connection();
 
+app.use(express.static(path.join(__dirname, '/build')))
+
 app.use(bodyParser.json());
 
 app.use(cookieSession({
@@ -18,6 +21,10 @@ app.use(cookieSession({
 app.use(cors())
 
 app.use('/api/users', users)
+
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/build/index.html'))
+})
 
 const port = process.env.PORT || 5000;
 
