@@ -1,11 +1,14 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
 
 import Input from '../components/Form/Input';
 import FormButton from '../components/Form/FormButton';
+import Alert from '../components/Alert/index';
 import {utils} from '../_utils/index'
 import { userAction } from '../_actions/userAction';
+import { loginLoading, successAlert, errorAlert, authenticate } from '../_selectors/userSelector';
 
 const Login = () => {
   const [fields, setFields] = useState({
@@ -13,8 +16,27 @@ const Login = () => {
     password: ""
   });
 
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const dispatch = useDispatch();
+  const loading = useSelector(state => loginLoading(state));
+  const authenticated = useSelector(state => authenticate(state));
+  const success = useSelector(state => successAlert(state));
+  const error = useSelector(state => errorAlert(state));
+
+  useEffect(function() {
+    if(authenticated) {
+      const timeout = setTimeout(function() {
+        navigate('/dashboard')
+      }, 1500);
+
+      return function() {
+        clearTimeout(timeout)
+      }
+    }
+  })
+
+  // Form input
   const handleChange = useCallback(({target}) => {
     const { name, value } = target;
 
@@ -33,6 +55,16 @@ const Login = () => {
   return (
     <SignupMain>
       <div className="container">
+        <Alert 
+          success={{
+            isSuccess: success?.length,
+            message: success
+          }}
+          error={{
+            isError: error?.length,
+            message: error
+          }}
+        />
         <section>
           <h2>Login your dashboard</h2>
           <form onSubmit={handleSubmit}>
@@ -43,6 +75,7 @@ const Login = () => {
               value={fields.email}
               name="email"
               onChange={handleChange}
+              required
             />
             <Input
               type="password" 
@@ -51,6 +84,7 @@ const Login = () => {
               value={fields.password}
               name="password"
               onChange={handleChange}
+              required
             />
             <FormButton 
               type="submit"
@@ -60,6 +94,7 @@ const Login = () => {
               bgColor="#03131e"
               value="Login"
               onClick={() => {}}
+              loading={loading}
             />
           </form>
         </section>
