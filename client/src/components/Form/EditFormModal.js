@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useUpdateTaskMutation } from '../../_services/taskServices';
@@ -38,7 +39,12 @@ const EditFormModal = ({ show, close, tasks, userId, id }) => {
 
     const tasksUpdate = tasks.map(task => {
       if(task._id === id) {
-        return { ...task, name: taskName, doAt: taskDate }
+        return { 
+          ...task, 
+          name: taskName, 
+          doAt: new Date(taskDate)
+            .toLocaleDateString(),  
+        }
       }
 
       return task
@@ -82,7 +88,6 @@ const EditFormModal = ({ show, close, tasks, userId, id }) => {
               name="do_at"
               onChange={handleTaskDate}
               error={error}
-              required
             />
             <FormButton 
               type="submit"
