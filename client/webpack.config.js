@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const path = require('path');
 const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
@@ -6,7 +7,7 @@ module.exports = {
   entry: './src/index.js',
   mode: 'development',
   output: {
-    path: path.resolve(__dirname, 'build/'),
+    path: path.resolve(__dirname, 'build'),
     publicPath: '/build/',
     filename: "app.bundle.js"
   },
@@ -21,6 +22,12 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['css-loader', 'style-loader', 'sass-loader']
+      },
+      {
+        test: /\.(png|jpg)$/i,
+        use: {
+          loader: 'url-loader'
+        }
       }
     ]
   },
