@@ -17,7 +17,7 @@ const DashBoardContent = styled.div`
   display: grid;
   grid-template-columns: 1fr;
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 900px) {
     grid-template-columns: 350px 1fr;
   }
 `;
