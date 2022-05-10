@@ -12,6 +12,26 @@ const checkEmptyFields = (fields) => {
   return valid
 } 
 
+const clearFields = (fields) => {
+
+  for(let field in fields) {
+    fields[field] = ""
+  }
+
+  return fields
+}
+
+const dateFormatOptions = () => {
+  return {
+    weekday:'long',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  }
+}
+
 export const utils = {
-  checkEmptyFields
+  checkEmptyFields,
+  clearFields,
+  dateFormatOptions
 }
