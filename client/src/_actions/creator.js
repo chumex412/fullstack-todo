@@ -1,5 +1,31 @@
 
-import { loginConstants, registerConstants, taskConstants } from './type'
+import { loginConstants, registerConstants, taskConstants, alertConstants } from './type'
+
+function alertAction () {
+  return {
+    success(message) {
+      return {
+        type: alertConstants.ALERT_SUCCESS,
+        payload: {
+          message
+        }
+      }
+    },
+    error(message) {
+      return {
+        type: alertConstants.ALERT_ERROR,
+        payload: {
+          message
+        }
+      }
+    },
+    clear() {
+      return {
+        type: alertConstants.CLEAR_ALERT
+      }
+    }
+  }
+}
 
 function loginAction () {
   return {
@@ -20,6 +46,11 @@ function loginAction () {
         payload: {
           error
         }
+      }
+    }, 
+    logout() {
+      return {
+        type: loginConstants.LOGOUT
       }
     }
   }
@@ -79,5 +110,6 @@ function tasksAction() {
 export {
   loginAction,
   registerAction,
-  tasksAction
+  tasksAction,
+  alertAction
 }

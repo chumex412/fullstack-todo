@@ -1,6 +1,11 @@
+const ALERT_SUCCESS = 'alert/success';
+const ALERT_ERROR = 'alert/error';
+const CLEAR_ALERT = 'alert/clear';
+
 const LOGIN_REQUEST = 'login/request';
 const LOGIN_SUCCESS = 'login/success';
 const LOGIN_ERROR = 'login/error';
+const LOGOUT = 'login/loggedout'
 
 const REGISTER_REQUEST = 'register/request';
 const REGISTER_SUCCESS = 'regsiter/success';
@@ -13,10 +18,17 @@ const DELETE_TASK = 'task/delete';
 
 const USERS_GETALL = 'users/getall';
 
+export const alertConstants = {
+  ALERT_SUCCESS,
+  ALERT_ERROR, 
+  CLEAR_ALERT
+}
+
 export const loginConstants = {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
-  LOGIN_ERROR
+  LOGIN_ERROR,
+  LOGOUT
 }
 
 export const registerConstants = {
