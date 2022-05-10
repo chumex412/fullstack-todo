@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useCallback } from 'react'
 
 import Input from './Input'
@@ -31,11 +32,14 @@ const TaskForm = ({id}) => {
 
     const data = {
       name: fields.task_name, 
-      doAt: fields.do_at, 
+      doAt: new Date(fields.do_at)
+        .toLocaleDateString(), 
       completed: false
     }
 
     addTask({ id, ...data })
+
+    setFields(utils.clearFields(fields))
   }
 
   return (
