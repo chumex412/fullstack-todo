@@ -17,5 +17,13 @@ async function login(user) {
 }
 
 async function register (profile) {
+  const response = await fetch('/api/users/register', {
+    headers: {
+      'Content-type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify(profile)
+  })
 
+  return response.json()
 }
