@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
@@ -14,12 +15,16 @@ const Dashboard = ({ user }) => {
         <AdminDashBoard />
       </DashBoardCenter>
     )
-  } else {
+  } 
+  
+  if(!user.admin) {
     return (
       <DashBoardCenter>
         <UserDashboard user={user} />
       </DashBoardCenter>
     )
+  } else {
+    return <div>{null}</div>
   }
   
 }
