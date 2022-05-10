@@ -28,12 +28,13 @@ const Input = ({
             )}
           </label>
         <input
-        type={type}
+          type={type}
           className="form_input" 
           id={name}
           name={name} 
           placeholder={placeholder}
           value={value} 
+          required={required}
           onChange={ (e) => {
             onChange(e)
           }}
@@ -41,7 +42,7 @@ const Input = ({
       </FormGroup>
       {
         (required && !value && hasError) ? (
-          <small className={styles.error_msg}>The {title} field is required</small>
+          <small className="error-msg">The {title} field is required</small>
         ) : null
       }
     </div>
@@ -102,7 +103,7 @@ const FormGroup = styled.div`
     color: #BEB7B7;
   }
 
-  .error_msg {
+  .error-msg {
     font-size: 9px;
     line-height: 100%;
     color: #F24E1E;
