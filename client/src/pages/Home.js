@@ -1,23 +1,32 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Nav from '../components/Nav/index';
+import { authenticate } from '../_selectors/userSelector';
 
 const Home = () => {
+  const authenticated = useSelector(state => authenticate(state));
+  
   return (
     <div>
       <Nav />
       <Hero>
         <section>
           <h1>Organize your task for the week right here</h1>
-          <HeroBtnContainer>
-            <Link to="/signup" state={{role: "admin"}}>Register as an admin</Link>
-            <Link to="/signup" state={{role: "user"}}>Register as a user</Link>
-          </HeroBtnContainer>
-          <p>
-            <Link to="/login">Click here</Link>{ " " }
-            to login if you already have an account
-          </p>
+          {!authenticated && (
+              <>
+                <HeroBtnContainer>
+                  {/*<Link to="/signup" state={{role: "admin"}}>Register as an admin</Link>*/}
+                  <Link to="/signup" state={{role: "user"}}>Register as a user</Link>
+                </HeroBtnContainer>
+                <p>
+                  <Link to="/login">Click here</Link>{ " " }
+                  to login if you already have an account
+                </p>
+              </>
+            )
+          }
         </section>
       </Hero>
     </div>
