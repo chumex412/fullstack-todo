@@ -1,4 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
+import Loader from '../Loader/index.js'
 
 const FormButton = ({
   type="button",
@@ -8,7 +10,8 @@ const FormButton = ({
   bgColor, 
   onClick, 
   full_width,
-  disabled=false
+  disabled=false,
+  loading=false
 }) => {
   return (
     <button 
@@ -22,7 +25,13 @@ const FormButton = ({
       type={type}
       onClick={() => onClick()}
     >
-      {value}
+      {
+        loading ? (
+          <Loader />
+        ) : (
+          value
+        )
+      }
     </button>
   )
 }
