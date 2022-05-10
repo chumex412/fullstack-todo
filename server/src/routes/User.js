@@ -14,7 +14,7 @@ router.post('/register', async function(req, res) {
     if(user) {
       res.send({ success: false, message: 'User already exist' });
     } else {
-      const newUser = new Users({ ...currentUser, tasks: [] });
+      const newUser = new Users({ ...currentUser });
 
       newUser.save(error => {
         if(error) {
@@ -54,6 +54,11 @@ router.post('/login', async function (req, res) {
           message: 'Wrong login credentials'
         })
       }
+    } else {
+      res.status(404).json({
+        success: false,
+        message: 'User does not exist'
+      })
     }
   })
 });
