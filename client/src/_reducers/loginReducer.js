@@ -36,6 +36,14 @@ const loginReducer = (state=initialState, action) => {
     }
   }
 
+  if(action.type === loginConstants.LOGOUT) {
+    return {
+      ...state,
+      isAuthenticated: false,
+      user: {}
+    }
+  }
+
   return state
 }
 
