@@ -1,5 +1,6 @@
 {
-  "name": "client",
+  "homepage": "https://cool-todo.vercel.app",
+  "name": "cool-todo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
