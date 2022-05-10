@@ -32,6 +32,7 @@ const GlobablStyle = createGlobalStyle`
 
   body {
     font-size: 1rem;
+    font-family: "Noto Sans", sans-serif;
   }
 
   a,
@@ -55,6 +56,30 @@ const GlobablStyle = createGlobalStyle`
     padding: 0 1.5rem;
   }
 
+  .sidebar-toggler {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    visibility: visible;
+    opacity: 1;
+    z-index: 10;
+  }
+
+  svg .a {
+    fill:none;
+    stroke-linecap:round;
+    stroke-width:2px;
+    transition: all 0.4s ease-out;
+    -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+  }
+
   @media only screen and (min-width: 600px) {
     :root {
       --base-size: 0.9;
@@ -68,6 +93,14 @@ const GlobablStyle = createGlobalStyle`
   @media only screen and (min-width: 768px) {
     .container {
       max-width: 720px;
+    }
+  }
+
+  @media only screen and (min-width: 900px) {
+    .sidebar-toggler {
+      display: none;
+      visibility: hidden;
+      opacity: 0;
     }
   }
 
