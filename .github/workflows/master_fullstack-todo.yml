@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'Fullstack-todo'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_580AB0B69D834A0FAB37918541D0A66C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F40E94C5DDAB496B8E33B9E7E8225CA8 }}
           package: .
