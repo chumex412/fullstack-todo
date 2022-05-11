@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/server/src/(.*)",
-      "destination": "/server/src/index.js"
+      "source": "/api/users",
+      "destination": "./server/src/index.js"
     }
   ]
 }
