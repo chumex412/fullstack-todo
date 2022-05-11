@@ -24,7 +24,7 @@ export const AppProvider = ({ children }) => {
   const getAllUsers = async () => {
     
     try {
-      const res = await fetch('api/users/')
+      const res = await fetch(`${window.location.origin}/api/users/`)
 
       const response = await res.json()
 

@@ -34,11 +34,11 @@ module.exports = {
   resolve: { extensions: ['*', '.js', '.jsx'] },
   devServer: {
     port: 3000,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:5000'
-      }
-    },
+    //proxy: {
+    //  '/api': {
+    //    target: 'http://localhost:5000'
+    //  }
+    //},
     static: path.join(__dirname, 'public'),
     hot: true,
     historyApiFallback: true,
