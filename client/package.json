@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx webpack-dev-server --open",
-    "build": "webpack --config webpack.config.js --mode production",
+    "build": "webpack --config webpack.config.js --mode production && mv build ../public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
