@@ -104,7 +104,8 @@ const Login = () => {
 }
 
 const SignupMain = styled.main`
-  background-color: var(--light-color);
+  background-image: linear-gradient(45deg, var(--light-color), var(--off-white));
+  background-repeat: no-repeat;
   padding: 3rem 0;
   min-height: 100vh;
   display: flex;

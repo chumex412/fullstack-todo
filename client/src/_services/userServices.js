@@ -5,7 +5,7 @@ export const userServices = {
 
 
 async function login(user) {
-  const response = await fetch(`${window.location.origin}/api/users/login`, {
+  const response = await fetch(`http://localhost:5000/api/users/login`, {
     headers: {
       'Content-type': 'application/json'
     },
@@ -13,11 +13,13 @@ async function login(user) {
     body: JSON.stringify(user)
   })
 
+  console.log(window.location.origin)
+
   return response.json()
 }
 
 async function register (profile) {
-  const response = await fetch(`${window.location.origin}/api/users/register`, {
+  const response = await fetch(`http://localhost:5000/api/users/register`, {
     headers: {
       'Content-type': 'application/json'
     },
